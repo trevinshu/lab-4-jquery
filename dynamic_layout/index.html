@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two: Dynamic Layout</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script src="jquery.js"></script>
+    <script src="masonry.pkgd.min.js"></script>
+    <script src="imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('.grid').imagesLoaded(function () {
+          $('.grid').masonry({
+            itemSelector: '.grid-item',
+            gutter: 10,
+            stagger: 30,
+          });
+        });
+      });
+    </script>
+  </head>
+  <body class="container">
+    <h1 class="text-center">Two: Dynamic Layout Example</h1>
+    <div class="grid">
+      <div class="grid-item">
+        <img src="img/bear.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/bird.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/butterfly.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/goats.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/dog.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/horse.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/elk.jpg" alt="" />
+      </div>
+      <div class="grid-item">
+        <img src="img/cat (Small).jpg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

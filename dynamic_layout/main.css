@@ -1,0 +1,16 @@
+h1 {
+  margin: 1rem 0;
+}
+
+.grid-item {
+  width: 30%;
+  margin-bottom: 1rem;
+}
+
+.grid-item > img {
+  width: 100%;
+}
+
+.container {
+  margin-top: 1rem;
+}

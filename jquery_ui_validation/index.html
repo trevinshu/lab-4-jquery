@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One: jQuery UI & Validation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+      integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="validate.js"></script>
+    <script>
+      $(document).ready(function () {
+        // accordion and tab
+        $('#accordion').accordion();
+        $('#dialog').dialog({
+          autoOpen: false,
+          width: 1000,
+          show: {
+            effect: 'drop',
+            duration: 1000,
+          },
+          hide: {
+            effect: 'drop',
+            duration: 1000,
+          },
+        });
+        // Link to open the dialog
+        $('#open').click(function (event) {
+          $('#dialog').dialog('open');
+          event.preventDefault();
+        });
+
+        $('#validateForm').validate({
+          rules: {
+            name: {
+              required: true,
+              minlength: 2,
+            },
+            email: {
+              required: true,
+              email: true,
+            },
+            url: {
+              url: true,
+            },
+            age: {
+              number: true,
+            },
+            creditCard: {
+              creditcard: true,
+            },
+            comment: {
+              required: true,
+              minlength: 5,
+              maxlength: 100,
+            },
+            password: {
+              required: true,
+              minlength: 8,
+            },
+            confirmPassword: {
+              required: true,
+              minlength: 8,
+              equalTo: '#password',
+            },
+          },
+          messages: {
+            name: {
+              required: 'Name is required',
+              minlength: "Name can't be less than 5 characters",
+            },
+            email: {
+              required: 'Email is required',
+              email: 'Enter a valid email address',
+            },
+            url: 'Please enter a valid web address',
+            age: 'Please enter a valid number',
+            creditcard: 'Please enter a valid credit card number',
+            comment: {
+              required: 'Comment is required',
+              minlength: "Comment can't be less than 5 characters",
+              maxlength: "Comment can't be more than 100 characters",
+            },
+            password: {
+              required: 'Password is required.',
+              minlength: 'Your password must be at least 8 characters long',
+            },
+            confirmPassword: {
+              required: 'Confirm your password',
+              minlength: 'Password must be at least 8 characters long',
+              equalTo: 'Passwords must match.',
+            },
+          },
+        });
+      });
+    </script>
+    <style type="text/css">
+      label.error {
+        color: red;
+        padding: 5px 0;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <h1 class="text-center mb-4 mt-4">One: jQuery UI & Validation</h1>
+    <div id="accordion">
+      <h2>Content One</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos eligendi animi, corrupti velit voluptates non iusto sunt, repellendus assumenda, dolorem impedit consectetur! Numquam itaque,
+        totam veniam suscipit tempore fugit excepturi repudiandae aspernatur ut veritatis dicta iusto magnam minus nemo voluptatibus ipsa! Dolor quae laborum exercitationem voluptatibus delectus?
+        Dolorum, quae distinctio!
+      </p>
+      <h2>Content Two</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos eligendi animi, corrupti velit voluptates non iusto sunt, repellendus assumenda, dolorem impedit consectetur! Numquam itaque,
+        totam veniam suscipit tempore fugit excepturi repudiandae aspernatur ut veritatis dicta iusto magnam minus nemo voluptatibus ipsa! Dolor quae laborum exercitationem voluptatibus delectus?
+        Dolorum, quae distinctio!
+      </p>
+      <h2>Content Three</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos eligendi animi, corrupti velit voluptates non iusto sunt, repellendus assumenda, dolorem impedit consectetur! Numquam itaque,
+        totam veniam suscipit tempore fugit excepturi repudiandae aspernatur ut veritatis dicta iusto magnam minus nemo voluptatibus ipsa! Dolor quae laborum exercitationem voluptatibus delectus?
+        Dolorum, quae distinctio!
+      </p>
+    </div>
+    <button id="open" class="btn btn-primary mt-3">Open Form</button>
+    <div id="dialog">
+      <form action="#" id="validateForm" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" name="name" class="form-control" id="name" placeholder="Bob" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" class="form-control" placeholder="bob@mail.com" />
+        </div>
+        <div class="form-group">
+          <label for="url">Website:</label>
+          <input type="url" name="url" id="url" class="form-control" placeholder="http://google.com" />
+        </div>
+        <div class="form-group">
+          <label for="creditCard">Credit Card:</label>
+          <input type="text" name="creditCard" id="creditCard" class="form-control" placeholder="12345678901234569" />
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="text" name="age" id="age" class="form-control" placeholder="12" />
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea name="comment" id="comment" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" />
+        </div>
+        &nbsp;
+        <div class="form-group">
+          <input type="submit" value="submit" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
